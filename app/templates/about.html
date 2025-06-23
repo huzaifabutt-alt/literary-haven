@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="About Sajjad Bhutta - English Literature Student and Literary Haven Creator">
+    <meta name="author" content="Sajjad Bhutta">
+
+    <title>About Me - Literary Haven</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --slate-900: #0f172a;
+            --slate-800: #1e293b;
+            --slate-700: #334155;
+            --slate-600: #475569;
+            --slate-500: #64748b;
+            --slate-400: #94a3b8;
+            --slate-300: #cbd5e1;
+            --slate-200: #e2e8f0;
+            --slate-100: #f1f5f9;
+            --amber-400: #fbbf24;
+            --amber-500: #f59e0b;
+            --amber-600: #d97706;
+            --white: #ffffff;
+            --navy-dark: #1e293b;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--slate-900) 0%, var(--slate-800) 50%, var(--slate-900) 100%);
+            color: var(--white);
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--slate-800);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--slate-600);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--slate-500);
+        }
+
+        /* EXACT SAME NAVBAR AS INDEX PAGE */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--navy-dark);
+            border-bottom: 1px solid var(--slate-700);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        /* Brand Section */
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--white);
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .nav-brand:hover {
+            color: var(--white);
+            text-decoration: none;
+            transform: scale(1.02);
+        }
+
+        .brand-icon {
+            width: 28px;
+            height: 28px;
+            background: var(--amber-400);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .nav-brand:hover .brand-icon {
+            transform: rotate(5deg);
+            box-shadow: 0 4px 15px rgba(251, 191, 36, 0.4);
+        }
+
+        /* Desktop Navigation */
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 3rem;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+            font-size: 1rem;
+            position: relative;
+            padding: 0.75rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--amber-400);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--amber-400);
+            text-decoration: none;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a.active {
+            color: var(--amber-400);
+        }
+
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        /* User Section */
+        .user-section {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .user-greeting {
+            color: var(--white);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .user-greeting span {
+            color: var(--amber-400);
+            font-weight: 600;
+        }
+
+        /* FIXED: Auth Button Styles with proper hover text color */
+        .auth-btn {
+            background: transparent;
+            border: 2px solid var(--amber-400);
+            color: var(--amber-400);
+            padding: 0.5rem 2rem;
+            min-width: 120px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .auth-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--amber-400);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .auth-btn:hover::before {
+            left: 0;
+        }
+
+        .auth-btn:hover {
+            color: #000000 !important;
+            text-decoration: none;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(251, 191, 36, 0.3);
+        }
+
+        /* Mobile Menu Toggle */
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: 2px solid var(--amber-400);
+            color: var(--amber-400);
+            padding: 0.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            width: 44px;
+            height: 44px;
+        }
+
+        .mobile-toggle:hover {
+            background: rgba(251, 191, 36, 0.1);
+        }
+
+        .mobile-toggle.active {
+            background: var(--amber-400);
+            color: var(--navy-dark);
+        }
+
+        .mobile-toggle i {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-toggle.active i {
+            transform: rotate(90deg);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            background: var(--navy-dark);
+            border-bottom: 1px solid var(--slate-700);
+            transform: translateY(-100%);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            max-height: calc(100vh - 70px);
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-menu-content {
+            padding: 2rem 1rem;
+        }
+
+        .mobile-nav-list {
+            list-style: none;
+            margin-bottom: 2rem;
+            padding: 0;
+        }
+
+        .mobile-nav-item {
+            margin-bottom: 0.5rem;
+        }
+
+        .mobile-nav-link {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            display: block;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--slate-700);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .mobile-nav-link:hover {
+            color: var(--amber-400);
+            text-decoration: none;
+            padding-left: 1rem;
+        }
+
+        .mobile-nav-link::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--amber-400);
+            transition: width 0.3s ease;
+        }
+
+        .mobile-nav-link:hover::before {
+            width: 20px;
+        }
+
+        .mobile-user-section {
+            padding-top: 1.5rem;
+            border-top: 2px solid var(--slate-700);
+        }
+
+        .mobile-user-greeting {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+        .mobile-auth-btn {
+            background: transparent;
+            border: 2px solid var(--amber-400);
+            color: var(--amber-400);
+            padding: 0.75rem 2.5rem;
+            min-width: 150px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+
+        .mobile-auth-btn:hover {
+            background: var(--amber-400);
+            color: #000000 !important;
+            text-decoration: none;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(251, 191, 36, 0.3);
+        }
+
+        /* Mobile Menu Overlay */
+        .mobile-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Main Content Spacing */
+        .main-content {
+            margin-top: 70px;
+            flex: 1;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(30, 41, 59, 0.8)), url('/placeholder.svg?height=600&width=1200');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 120px 0 80px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .hero-title {
+            font-family: 'Lora', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--white) 0%, var(--amber-400) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            opacity: 0;
+            transform: translateY(50px) scale(0.9);
+            animation: heroTitleAnimation 1.2s ease-out 0.3s forwards;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--slate-300);
+            font-weight: 300;
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: heroSubtitleAnimation 1s ease-out 0.6s forwards;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: var(--slate-200);
+            line-height: 1.8;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: heroDescAnimation 1s ease-out 0.9s forwards;
+        }
+
+        @keyframes heroTitleAnimation {
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes heroSubtitleAnimation {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes heroDescAnimation {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Content Container */
+        .content-container {
+            max-width: 1200px;
+            margin: -4rem auto 2rem;
+            position: relative;
+            z-index: 10;
+            padding: 0 2rem;
+            min-height: auto;
+        }
+
+        .content-card {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid var(--slate-700);
+            border-radius: 20px;
+            padding: 3rem;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            transition: all 0.5s ease;
+            opacity: 0;
+            transform: translateY(60px);
+            margin-bottom: 0;
+        }
+
+        .content-card.animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .content-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 35px 70px rgba(251, 191, 36, 0.15);
+        }
+
+        /* About Content */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .text-content p {
+            font-size: 1.1rem;
+            color: var(--slate-200);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            text-align: justify;
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: all 0.6s ease;
+        }
+
+        .text-content.animate-in p {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .text-content.animate-in p:nth-child(1) { transition-delay: 0.1s; }
+        .text-content.animate-in p:nth-child(2) { transition-delay: 0.2s; }
+        .text-content.animate-in p:nth-child(3) { transition-delay: 0.3s; }
+        .text-content.animate-in p:nth-child(4) { transition-delay: 0.4s; }
+        .text-content.animate-in p:nth-child(5) { transition-delay: 0.5s; }
+
+        .text-content p:first-letter {
+            font-size: 3.5rem;
+            font-family: 'Lora', serif;
+            float: left;
+            line-height: 1;
+            margin: 0.1rem 0.5rem 0 0;
+            color: var(--amber-400);
+            font-weight: 700;
+        }
+
+        .image-section {
+            position: relative;
+            opacity: 0;
+            transform: translateX(30px) scale(0.95);
+            transition: all 0.8s ease;
+        }
+
+        .image-section.animate-in {
+            opacity: 1;
+            transform: translateX(0) scale(1);
+        }
+
+        .profile-image {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            transition: all 0.5s ease;
+            border: 3px solid var(--amber-400);
+        }
+
+        .profile-image:hover {
+            transform: scale(1.03) rotate(1deg);
+            box-shadow: 0 30px 60px rgba(251, 191, 36, 0.25);
+        }
+
+        .image-badge {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            background: var(--amber-400);
+            color: var(--slate-900);
+            padding: 0.75rem 1.25rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            box-shadow: 0 8px 25px rgba(251, 191, 36, 0.4);
+            opacity: 0;
+            transform: translateY(-10px) scale(0.8);
+            transition: all 0.5s ease;
+        }
+
+        .image-section.animate-in .image-badge {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            transition-delay: 0.3s;
+        }
+
+        /* Quote Section */
+        .quote-section {
+            text-align: center;
+            margin: 4rem 0;
+            padding: 3rem;
+            background: rgba(251, 191, 36, 0.1);
+            border-left: 4px solid var(--amber-400);
+            border-radius: 15px;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease;
+        }
+
+        .quote-section.animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .quote-text {
+            font-family: 'Lora', serif;
+            font-size: 1.4rem;
+            font-style: italic;
+            color: var(--amber-400);
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.6s ease;
+        }
+
+        .quote-section.animate-in .quote-text {
+            opacity: 1;
+            transform: scale(1);
+            transition-delay: 0.2s;
+        }
+
+        .quote-author {
+            color: var(--slate-300);
+            font-weight: 500;
+            font-size: 1.1rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .quote-section.animate-in .quote-author {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.4s;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0 0;
+        }
+
+        .stat-card {
+            background: rgba(251, 191, 36, 0.1);
+            border: 1px solid var(--amber-400);
+            border-radius: 15px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.5s ease;
+            opacity: 0;
+            transform: translateY(40px) scale(0.9);
+        }
+
+        .stat-card.animate-in {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .stat-card:nth-child(1).animate-in { transition-delay: 0.1s; }
+        .stat-card:nth-child(2).animate-in { transition-delay: 0.2s; }
+        .stat-card:nth-child(3).animate-in { transition-delay: 0.3s; }
+
+        .stat-card:hover {
+            background: rgba(251, 191, 36, 0.2);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(251, 191, 36, 0.2);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--amber-400);
+            display: block;
+            margin-bottom: 0.5rem;
+            opacity: 0;
+            transform: scale(0.5);
+            transition: all 0.6s ease;
+        }
+
+        .stat-card.animate-in .stat-number {
+            opacity: 1;
+            transform: scale(1);
+            transition-delay: 0.3s;
+        }
+
+        .stat-label {
+            color: var(--slate-300);
+            font-weight: 500;
+            font-size: 1.1rem;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.6s ease;
+        }
+
+        .stat-card.animate-in .stat-label {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.5s;
+        }
+
+        /* FIXED: Footer Styling */
+        .footer {
+            background: var(--slate-900);
+            border-top: 1px solid var(--slate-800);
+            padding: 2rem 0;
+            text-align: center;
+            margin-top: 2rem;
+            width: 100%;
+            position: relative;
+            z-index: 10;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            color: var(--slate-400);
+            font-size: 0.9rem;
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.6s ease;
+        }
+
+        .footer-content.animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Scroll Progress */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--amber-400), var(--amber-600));
+            z-index: 1001;
+            transition: width 0.1s ease;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-toggle {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .nav-container {
+                padding: 0 0.5rem;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .hero-description {
+                font-size: 1rem;
+            }
+
+            .content-container {
+                padding: 0 1rem;
+                margin: -2rem auto 1rem;
+            }
+
+            .content-card {
+                padding: 2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .text-content p:first-letter {
+                font-size: 2.5rem;
+            }
+
+            .stats-section {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .stat-card {
+                padding: 2rem;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+
+            .footer {
+                padding: 1.5rem 0;
+                margin-top: 1.5rem;
+            }
+            
+            .footer-content {
+                padding: 0 1rem;
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .content-card {
+                padding: 1.5rem;
+                border-radius: 15px;
+            }
+
+            .text-content p {
+                font-size: 1rem;
+            }
+
+            .nav-container {
+                padding: 0 0.5rem;
+            }
+
+            .footer {
+                padding: 1rem 0;
+                margin-top: 1rem;
+            }
+            
+            .footer-content {
+                padding: 0 0.5rem;
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Prevent body scroll when mobile menu is open */
+        body.mobile-menu-open {
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+
+    <!-- Navigation - EXACT SAME AS INDEX PAGE -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="{{ url_for('main.index') }}" class="nav-brand">
+                <div class="brand-icon">📚</div>
+                Literary Haven
+            </a>
+
+            <!-- Desktop Navigation -->
+            <ul class="nav-links">
+                <li><a href="{{ url_for('main.index') }}">Home</a></li>
+                <li><a href="{{ url_for('main.about') }}" class="active">About Me</a></li>
+                <li><a href="{{ url_for('main.contact') }}">Contact Us</a></li>
+                <li>
+                    <div class="user-section">
+                        {% if current_user.is_authenticated %}
+                            <span class="user-greeting">Hello, <span>{{ current_user.username }}</span></span>
+                            <a href="{{ url_for('main.logout') }}" class="auth-btn">Logout</a>
+                        {% else %}
+                            <a href="{{ url_for('main.login') }}" class="auth-btn">Login</a>
+                        {% endif %}
+                    </div>
+                </li>
+            </ul>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle mobile menu" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
+        <div class="mobile-menu-content">
+            <ul class="mobile-nav-list">
+                <li class="mobile-nav-item">
+                    <a href="{{ url_for('main.index') }}" class="mobile-nav-link">Home</a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="{{ url_for('main.about') }}" class="mobile-nav-link">About Me</a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="{{ url_for('main.contact') }}" class="mobile-nav-link">Contact Us</a>
+                </li>
+            </ul>
+            
+            <div class="mobile-user-section">
+                {% if current_user.is_authenticated %}
+                    <div class="mobile-user-greeting">Hello, <span>{{ current_user.username }}</span></div>
+                    <a href="{{ url_for('main.logout') }}" class="mobile-auth-btn">Logout</a>
+                {% else %}
+                    <a href="{{ url_for('main.login') }}" class="mobile-auth-btn">Login</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title">Sajjad Bhutta</h1>
+                <p class="hero-subtitle">Pursuing B.S in English Literature</p>
+                <p class="hero-description">
+                    Welcome to my literary journey. I'm passionate about exploring the depths of English literature, 
+                    from classical masterpieces to contemporary voices that shape our understanding of the world.
+                </p>
+            </div>
+        </section>
+
+        <!-- Content Container -->
+        <div class="content-container">
+            <div class="content-card" id="contentCard">
+                <!-- About Content -->
+                <div class="about-content">
+                    <div class="text-content" id="textContent">
+                        <p>
+                            Hello! I'm Sajjad Bhutta, an English Literature enthusiast with a deep passion for words, stories, and the magic they create. I believe literature is more than just books—it's a window into history, emotions, and the human experience.
+                        </p>
+                        <p>
+                            Currently pursuing my studies in English Literature, I enjoy analyzing the works of literary greats like Shakespeare, Austen, and Wordsworth, as well as exploring modern and diverse voices from contemporary writers. My journey into literature has allowed me to uncover stories that challenge perspectives and celebrate cultures from around the world.
+                        </p>
+                        <p>
+                            Beyond the classroom, I love diving into novels, writing reflective pieces, and discussing themes that resonate deeply—love, identity, and society's ever-changing dynamics. My goal is to share my literary insights with others and inspire meaningful conversations about the power of storytelling.
+                        </p>
+                        <p>
+                            Whether you're a fellow literature lover or someone looking for their next great read, I hope this space—Literary Haven—becomes your go-to destination for inspiration and connection through the written word.
+                        </p>
+                        <p style="font-weight: 600; color: var(--amber-400); text-align: center; font-family: 'Lora', serif;">
+                            Let's keep turning the pages together.
+                        </p>
+                    </div>
+                    
+                    <div class="image-section" id="imageSection">
+                        <div class="image-badge">Literature Student</div>
+                        <img src="{{ url_for('static', filename='about.jpg') }}" alt="Sajjad Bhutta - English Literature Student" class="profile-image">
+                    </div>
+                </div>
+
+                <!-- Quote Section -->
+                <div class="quote-section" id="quoteSection">
+                    <div class="quote-text">
+                        "Literature is the most agreeable way of ignoring life."
+                    </div>
+                    <div class="quote-author">— Fernando Pessoa</div>
+                </div>
+
+                <!-- Stats Section -->
+                <div class="stats-section" id="statsSection">
+                    <div class="stat-card">
+                        <span class="stat-number">500+</span>
+                        <div class="stat-label">Books Read</div>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">50+</span>
+                        <div class="stat-label">Authors Explored</div>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">3+</span>
+                        <div class="stat-label">Years Studying</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content" id="footerContent">
+            <p>Copyright © Created By Huzaifa Butt For Sajjad Bhutta 2024</p>
+        </div>
+    </footer>
+
+    <script>
+        // Enhanced Mobile Menu Toggle System - EXACT SAME AS INDEX PAGE
+        class MobileMenuManager {
+            constructor() {
+                this.mobileToggle = document.getElementById('mobileToggle');
+                this.mobileMenu = document.getElementById('mobileMenu');
+                this.mobileOverlay = document.getElementById('mobileOverlay');
+                this.toggleIcon = this.mobileToggle.querySelector('i');
+                this.isOpen = false;
+                
+                this.init();
+            }
+
+            init() {
+                // Toggle button event
+                this.mobileToggle.addEventListener('click', () => this.toggle());
+                
+                // Overlay click to close
+                this.mobileOverlay.addEventListener('click', () => this.close());
+                
+                // Close on navigation link click
+                document.querySelectorAll('.mobile-nav-link, .mobile-auth-btn').forEach(link => {
+                    link.addEventListener('click', () => this.close());
+                });
+                
+                // Close on window resize
+                window.addEventListener('resize', () => {
+                    if (window.innerWidth > 768 && this.isOpen) {
+                        this.close();
+                    }
+                });
+                
+                // Close on escape key
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && this.isOpen) {
+                        this.close();
+                    }
+                });
+            }
+
+            toggle() {
+                if (this.isOpen) {
+                    this.close();
+                } else {
+                    this.open();
+                }
+            }
+
+            open() {
+                this.isOpen = true;
+                this.mobileMenu.classList.add('active');
+                this.mobileOverlay.classList.add('active');
+                this.mobileToggle.classList.add('active');
+                this.mobileToggle.setAttribute('aria-expanded', 'true');
+                this.toggleIcon.className = 'fas fa-times';
+                document.body.classList.add('mobile-menu-open');
+                
+                // Focus management
+                this.mobileMenu.focus();
+            }
+
+            close() {
+                this.isOpen = false;
+                this.mobileMenu.classList.remove('active');
+                this.mobileOverlay.classList.remove('active');
+                this.mobileToggle.classList.remove('active');
+                this.mobileToggle.setAttribute('aria-expanded', 'false');
+                this.toggleIcon.className = 'fas fa-bars';
+                document.body.classList.remove('mobile-menu-open');
+                
+                // Return focus to toggle button
+                this.mobileToggle.focus();
+            }
+        }
+
+        // Initialize mobile menu
+        const mobileMenuManager = new MobileMenuManager();
+
+        // Enhanced Scroll Animations
+        class ScrollAnimator {
+            constructor() {
+                this.elements = new Map();
+                this.init();
+            }
+
+            init() {
+                this.registerElement('contentCard', { threshold: 0.2 });
+                this.registerElement('textContent', { threshold: 0.3 });
+                this.registerElement('imageSection', { threshold: 0.3 });
+                this.registerElement('quoteSection', { threshold: 0.4 });
+                this.registerElement('statsSection', { threshold: 0.3 });
+                this.registerElement('footerContent', { threshold: 0.8 });
+
+                const statCards = document.querySelectorAll('.stat-card');
+                statCards.forEach((card, index) => {
+                    card.id = `statCard${index}`;
+                    this.registerElement(`statCard${index}`, { threshold: 0.4 });
+                });
+
+                this.createObserver();
+            }
+
+            registerElement(id, options = {}) {
+                const element = document.getElementById(id);
+                if (element) {
+                    this.elements.set(id, {
+                        element,
+                        options: { threshold: 0.2, ...options },
+                        animated: false
+                    });
+                }
+            }
+
+            createObserver() {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        const elementData = Array.from(this.elements.values())
+                            .find(data => data.element === entry.target);
+                        
+                        if (elementData && entry.isIntersecting && !elementData.animated) {
+                            this.animateElement(entry.target);
+                            elementData.animated = true;
+                        }
+                    });
+                }, {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                });
+
+                this.elements.forEach(data => {
+                    observer.observe(data.element);
+                });
+            }
+
+            animateElement(element) {
+                element.classList.add('animate-in');
+                
+                if (element.id === 'statsSection') {
+                    const statCards = element.querySelectorAll('.stat-card');
+                    statCards.forEach((card, index) => {
+                        setTimeout(() => {
+                            card.classList.add('animate-in');
+                        }, index * 100);
+                    });
+                }
+            }
+        }
+
+        // Initialize scroll animator
+        const scrollAnimator = new ScrollAnimator();
+
+        // Scroll Progress Indicator
+        function updateScrollProgress() {
+            const scrollProgress = document.getElementById('scrollProgress');
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = (scrollTop / scrollHeight) * 100;
+            scrollProgress.style.width = progress + '%';
+        }
+
+        // Enhanced Navbar scroll effect
+        function updateNavbar() {
+            const navbar = document.querySelector('.navbar');
+            const scrollTop = window.pageYOffset;
+            
+            if (scrollTop > 100) {
+                navbar.style.background = 'rgba(30, 41, 59, 0.98)';
+                navbar.style.backdropFilter = 'blur(15px)';
+                navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.4)';
+            } else {
+                navbar.style.background = 'var(--navy-dark)';
+                navbar.style.backdropFilter = 'blur(10px)';
+                navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.3)';
+            }
+        }
+
+        // Smooth scrolling
+        function initSmoothScrolling() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Parallax effect
+        function initParallax() {
+            const heroSection = document.querySelector('.hero-section');
+            
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const rate = scrolled * -0.5;
+                heroSection.style.transform = `translateY(${rate}px)`;
+            });
+        }
+
+        // Initialize all features
+        document.addEventListener('DOMContentLoaded', function() {
+            initSmoothScrolling();
+            initParallax();
+            
+            window.addEventListener('scroll', () => {
+                updateScrollProgress();
+                updateNavbar();
+            });
+
+            updateScrollProgress();
+            updateNavbar();
+        });
+    </script>
+</body>
+
+</html>

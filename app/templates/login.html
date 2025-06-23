@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login - Literary Haven</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Lora:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+
+  <style>
+    :root {
+      --slate-900: #0f172a;
+      --slate-800: #1e293b;
+      --slate-700: #334155;
+      --slate-600: #475569;
+      --slate-400: #94a3b8;
+      --slate-300: #cbd5e1;
+      --amber-400: #fbbf24;
+      --amber-500: #f59e0b;
+      --amber-600: #d97706;
+      --white: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, var(--slate-900), var(--slate-800));
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Reusable Inputs/Buttons (from index page) */
+    .search-input {
+      background: var(--slate-700);
+      border: 1px solid var(--slate-600);
+      color: var(--white);
+      padding: 0.75rem;
+      border-radius: 6px;
+      font-size: 1rem;
+      width: 100%;
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: var(--amber-400);
+    }
+
+    .search-btn {
+      background: var(--amber-500);
+      color: var(--slate-900);
+      border: none;
+      padding: 0.75rem;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      width: 100%;
+    }
+
+    .search-btn:hover {
+      background: var(--amber-600);
+    }
+
+    /* Login Page */
+    .login-hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.9)), url('/placeholder.svg');
+      background-size: cover;
+      background-position: center;
+      padding: 2rem;
+    }
+
+    .login-card {
+      max-width: 480px;
+      width: 100%;
+      background: rgba(30, 41, 59, 0.5);
+      border: 1px solid var(--slate-700);
+      border-radius: 12px;
+      padding: 2rem;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .login-title {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: var(--amber-400);
+      text-align: center;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: var(--slate-300);
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    .login-footer {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.95rem;
+      color: var(--slate-400);
+    }
+
+    .login-footer a {
+      color: var(--amber-400);
+      font-weight: 500;
+    }
+
+    .login-footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 480px) {
+      .login-title {
+        font-size: 1.8rem;
+      }
+
+      .login-card {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <section class="login-hero">
+    <div class="login-card">
+      <h1 class="login-title">Login to Your Account</h1>
+
+      <form method="POST">
+        {{ form.hidden_tag() }}
+
+        <div class="form-group">
+          <label for="email">{{ form.email.label }}</label>
+          {{ form.email(class="search-input", id="email") }}
+        </div>
+
+        <div class="form-group">
+          <label for="password">{{ form.password.label }}</label>
+          {{ form.password(class="search-input", id="password") }}
+        </div>
+
+        <div class="form-group">
+          {{ form.submit(class="search-btn") }}
+        </div>
+      </form>
+
+      <div class="login-footer">
+        Don't have an account?
+        <a href="{{ url_for('main.register') }}">Register</a>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

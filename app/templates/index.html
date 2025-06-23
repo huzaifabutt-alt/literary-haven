@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Literary Haven - A Heaven for Literature Lovers</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Lora:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <style>
+    :root {
+      --slate-900: #0f172a;
+      --slate-800: #1e293b;
+      --slate-700: #334155;
+      --slate-600: #475569;
+      --slate-400: #94a3b8;
+      --slate-300: #cbd5e1;
+      --amber-400: #fbbf24;
+      --amber-500: #f59e0b;
+      --amber-600: #d97706;
+      --white: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, var(--slate-900), var(--slate-800));
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Navbar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: var(--slate-800);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      z-index: 999;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      font-size: 1.25rem;
+      font-weight: 700;
+      gap: 0.5rem;
+      color: var(--white);
+    }
+
+    .brand-icon {
+      background: var(--amber-400);
+      color: var(--white);
+      padding: 0.3rem 0.5rem;
+      border-radius: 6px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: var(--white);
+      position: relative;
+      font-weight: 500;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--amber-400);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .auth-btn {
+      padding: 0.5rem 1.2rem;
+      border: 2px solid var(--amber-400);
+      border-radius: 6px;
+      color: var(--amber-400);
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .auth-btn:hover {
+      background: var(--amber-400);
+      color: var(--slate-900);
+    }
+
+    /* Hero Section */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 2rem 1rem;
+      background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.9)), url('/placeholder.svg');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero h1 {
+      font-family: 'Lora', serif;
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      background: linear-gradient(to right, var(--white), var(--amber-400));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--slate-300);
+      max-width: 600px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-btn {
+      background: var(--amber-500);
+      color: var(--slate-900);
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .hero-btn:hover {
+      background: var(--amber-600);
+      transform: translateY(-2px);
+    }
+
+    /* Main Content */
+    .main-content {
+      max-width: 1200px;
+      margin: 4rem auto;
+      padding: 0 1rem;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 2rem;
+    }
+
+    .post-card {
+      background: rgba(30, 41, 59, 0.6);
+      border: 1px solid var(--slate-700);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: 0.3s ease;
+      backdrop-filter: blur(8px);
+    }
+
+    .post-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(251, 191, 36, 0.1);
+    }
+
+    .post-title {
+      font-family: 'Lora', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+      display: inline-block;
+    }
+
+    .post-title:hover {
+      color: var(--amber-400);
+    }
+
+    .post-subtitle {
+      color: var(--slate-300);
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .post-meta {
+      font-size: 0.85rem;
+      color: var(--slate-400);
+      margin-bottom: 1rem;
+    }
+
+    .read-more-btn {
+      padding: 0.5rem 1rem;
+      border: 2px solid var(--amber-400);
+      color: var(--amber-400);
+      border-radius: 6px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+
+    .read-more-btn:hover {
+      background: var(--amber-400);
+      color: var(--slate-900);
+    }
+
+    /* Sidebar Search */
+    .sidebar {
+      background: rgba(30, 41, 59, 0.6);
+      border: 1px solid var(--slate-700);
+      border-radius: 12px;
+      padding: 1.5rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .search-header {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .search-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .search-input {
+      padding: 0.75rem;
+      border-radius: 6px;
+      border: 1px solid var(--slate-600);
+      background: var(--slate-700);
+      color: var(--white);
+    }
+
+    .search-input::placeholder {
+      color: var(--slate-400);
+    }
+
+    .search-btn {
+      padding: 0.75rem;
+      background: var(--amber-500);
+      color: var(--slate-900);
+      font-weight: 600;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .search-btn:hover {
+      background: var(--amber-600);
+    }
+
+    .results-list {
+      margin-top: 1rem;
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .results-list li {
+      border-bottom: 1px solid var(--slate-700);
+      padding: 0.75rem 0;
+    }
+
+    .results-list li a {
+      font-weight: 600;
+      color: var(--amber-400);
+    }
+
+    .results-list li p {
+      color: var(--slate-300);
+      font-size: 0.95rem;
+      margin-top: 0.25rem;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: var(--slate-900);
+      border-top: 1px solid var(--slate-700);
+      color: var(--slate-400);
+      margin-top: 4rem;
+    }
+
+    @media (max-width: 768px) {
+      .main-content {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="{{ url_for('main.index') }}" class="nav-brand">
+        <div class="brand-icon">📚</div> Literary Haven
+      </a>
+      <ul class="nav-links">
+        <li><a href="{{ url_for('main.index') }}">Home</a></li>
+        <li><a href="{{ url_for('main.about') }}">About Me</a></li>
+        <li><a href="{{ url_for('main.contact') }}">Contact Us</a></li>
+        <li>
+          {% if current_user.is_authenticated %}
+            <span style="color: var(--amber-400); font-weight: 600;">Hello, {{ current_user.username }}</span>
+            <a href="{{ url_for('main.logout') }}" class="auth-btn">Logout</a>
+          {% else %}
+            <a href="{{ url_for('main.login') }}" class="auth-btn">Login</a>
+          {% endif %}
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Literary Haven</h1>
+    <p>A Heaven for literature lovers – Where words come alive and stories find their home.</p>
+    <a href="#posts" class="hero-btn">Explore Stories</a>
+  </section>
+
+  <!-- Main Content -->
+  <main class="main-content" id="posts">
+    <!-- Posts -->
+    <section class="posts-section">
+      {% if posts %}
+        {% for post in posts %}
+          <article class="post-card">
+            <a href="{{ url_for('main.post', post_id=post.id) }}" class="post-title">{{ post.title }}</a>
+            <div class="post-subtitle">{{ post.subtitle }}</div>
+            <div class="post-meta">
+              <span><i class="fas fa-user"></i> {{ post.author }}</span> |
+              <span><i class="fas fa-calendar"></i> {{ post.date_posted.strftime('%B %d, %Y') }}</span>
+            </div>
+            <a href="{{ url_for('main.post', post_id=post.id) }}" class="read-more-btn">Read More</a>
+          </article>
+        {% endfor %}
+      {% else %}
+        <div class="post-card" style="text-align: center; color: var(--slate-300);">
+          <i class="fas fa-book-open" style="font-size: 2rem; margin-bottom: 1rem;"></i>
+          <p>No posts available right now.</p>
+        </div>
+      {% endif %}
+    </section>
+
+    <!-- Sidebar Search -->
+    <aside class="sidebar">
+      <div class="search-header">Search Posts</div>
+      <form id="search-form" class="search-form">
+        <input class="search-input" type="search" name="query" id="query" placeholder="Enter keywords..." aria-label="Search" />
+        <button class="search-btn" type="submit">Search</button>
+      </form>
+
+      <div id="search-results">
+        <ul id="results-list" class="results-list"></ul>
+      </div>
+    </aside>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>Copyright © Created by Huzaifa Butt for Sajjad Bhutta – 2024</p>
+  </footer>
+
+  <!-- AJAX Search Script -->
+  <script>
+    document.getElementById('search-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const query = document.getElementById('query').value;
+      fetch(`/search_posts?query=${query}`)
+        .then(response => response.json())
+        .then(data => {
+          const resultsList = document.getElementById('results-list');
+          resultsList.innerHTML = '';
+          if (data.results.length === 0) {
+            resultsList.innerHTML = '<li>No results found.</li>';
+          } else {
+            data.results.forEach(post => {
+              const li = document.createElement('li');
+              li.innerHTML = `
+                <a href="/post/${post.id}">${post.title}</a>
+                <p>${post.subtitle}</p>
+              `;
+              resultsList.appendChild(li);
+            });
+          }
+        })
+        .catch(error => console.error('Search Error:', error));
+    });
+  </script>
+</body>
+</html>

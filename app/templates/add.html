@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Add New Post – Literary Haven</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Lora:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+
+  <style>
+    :root {
+      --slate-900: #0f172a;
+      --slate-800: #1e293b;
+      --slate-700: #334155;
+      --slate-600: #475569;
+      --slate-400: #94a3b8;
+      --slate-300: #cbd5e1;
+      --amber-400: #fbbf24;
+      --amber-500: #f59e0b;
+      --amber-600: #d97706;
+      --white: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, var(--slate-900), var(--slate-800));
+      color: var(--white);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a {
+      color: var(--amber-400);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--amber-300);
+    }
+
+    /* Navbar */
+    .navbar {
+      background: var(--slate-800);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      padding: 1rem 0;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      font-size: 1.25rem;
+      font-weight: 700;
+      gap: 0.5rem;
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .brand-icon {
+      background: var(--amber-400);
+      color: var(--white);
+      padding: 0.3rem 0.5rem;
+      border-radius: 6px;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: var(--white);
+      font-weight: 500;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: var(--amber-400);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* Page Header */
+    .page-header {
+      padding: 8rem 2rem 4rem;
+      background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.9)), url('/placeholder.svg');
+      background-size: cover;
+      background-position: center;
+      text-align: center;
+    }
+
+    .page-header h1 {
+      font-family: 'Lora', serif;
+      font-size: 3rem;
+      color: var(--amber-400);
+      margin-bottom: 0.5rem;
+    }
+
+    .page-header .subheading {
+      font-size: 1.25rem;
+      color: var(--slate-300);
+    }
+
+    /* Form */
+    .form-section {
+      max-width: 700px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background: rgba(30, 41, 59, 0.6);
+      border: 1px solid var(--slate-700);
+      border-radius: 12px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .form-section label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: var(--slate-300);
+      font-weight: 500;
+    }
+
+    .form-section input,
+    .form-section textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border-radius: 6px;
+      border: 1px solid var(--slate-600);
+      background: var(--slate-700);
+      color: var(--white);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .form-section textarea {
+      resize: vertical;
+    }
+
+    .form-section button {
+      background: var(--amber-500);
+      color: var(--slate-900);
+      font-weight: 600;
+      border: none;
+      border-radius: 6px;
+      padding: 0.75rem 2rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .form-section button:hover {
+      background: var(--amber-600);
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: var(--slate-900);
+      border-top: 1px solid var(--slate-700);
+      color: var(--slate-400);
+      margin-top: auto;
+    }
+
+    @media (max-width: 600px) {
+      .page-header h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="{{ url_for('main.index') }}" class="nav-brand">
+        <div class="brand-icon">📚</div> Literary Haven
+      </a>
+      <ul class="nav-links">
+        <li><a href="{{ url_for('main.index') }}">Home</a></li>
+        <li><a href="{{ url_for('main.delete') }}">Delete</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="page-header">
+    <h1>Add New Post</h1>
+    <p class="subheading">You can create a blog post here.</p>
+  </header>
+
+  <!-- Form Section -->
+  <section class="form-section">
+    <form method="POST" action="{{ url_for('main.addpost') }}">
+      <label for="title">Title</label>
+      <input type="text" name="title" id="title" placeholder="Enter title" required />
+
+      <label for="subtitle">Subtitle</label>
+      <input type="text" name="subtitle" id="subtitle" placeholder="Enter subtitle" required />
+
+      <label for="author">Author</label>
+      <input type="text" name="author" id="author" placeholder="Enter your name" required />
+
+      <label for="content">Blog Content</label>
+      <textarea name="content" id="content" rows="6" placeholder="Write your blog here..." required></textarea>
+
+      <button type="submit">Submit Post</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2024 Created by <a href="#">Huzaifa Butt</a> for <a href="#">Sajjad Bhutta</a></p>
+  </footer>
+</body>
+</html>
